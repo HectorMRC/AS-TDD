@@ -8,7 +8,7 @@ public class IntervalTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		fail("No implementat encara");
 	}
 
 }
