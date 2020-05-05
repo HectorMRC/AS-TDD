@@ -59,6 +59,14 @@ public class IntervalTest {
 	}
 	
 	
-	
+	@Test
+	public void obteTemps() {
+		int hi = 0;
+		int hf = 3;
+		TempsInterval i = new TempsInterval(hi, hf);
+		int temps = i.temps();
+		
+		assertEquals(temps, 4);
+	}
     
 }

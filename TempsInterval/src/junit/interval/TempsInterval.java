@@ -16,10 +16,6 @@ public class TempsInterval {
 		
 	}
 	
-	
-	
-	
-	
 	public int gethi() {
 		return hi;
 	}
@@ -27,6 +23,10 @@ public class TempsInterval {
 
 	public int gethf() {
 		return hf;
+	}
+	
+	public temps() {
+		return (this.hf - this.hi) + 1;
 	}
 
 }
