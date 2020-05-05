@@ -25,8 +25,16 @@ public class TempsInterval {
 		return hf;
 	}
 	
-	public temps() {
+	public int temps() {
 		return (this.hf - this.hi) + 1;
+	}
+
+	public String periodedeDia() {
+		String franja ="Més d’un període";
+		if(hi>=8 && hf<=12)franja="Mati";
+		else if(hi>=13 && hf<=20)franja="Tarda";
+		else if(hi>=21 && hf<=7)franja="Nit";
+		return franja;
 	}
 
 }

@@ -60,13 +60,21 @@ public class IntervalTest {
 	
 	
 	@Test
-	public void obteTemps() {
+	public void obteTemps() throws IntervalIncorrecte {
 		int hi = 0;
 		int hf = 3;
 		TempsInterval i = new TempsInterval(hi, hf);
 		int temps = i.temps();
-		
 		assertEquals(temps, 4);
+	}
+	
+	@Test
+	public void IntervalMati() throws IntervalIncorrecte {
+		int hi = 9;
+		int hf = 11;
+		TempsInterval i = new TempsInterval(hi, hf);
+		String franja= i.periodedeDia();
+		assertEquals(franja,"Mati");
 	}
     
 }
