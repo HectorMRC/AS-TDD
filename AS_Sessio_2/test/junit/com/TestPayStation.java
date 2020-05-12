@@ -67,5 +67,54 @@ public class TestPayStation {
   public void shouldRejectIllegalCoin() throws IllegalCoinException {
     ps.addPayment(17);
   }
+  
+  @Test
+  public void shouldDisplay14MinFor35Cents() throws IllegalCoinException {
+	  ps.addPayment(10);
+	  ps.addPayment(25);
+	  assertEquals( "Should display 14 min for 35 cents", 
+              35 / 5 * 2, ps.readDisplay() );
+  }
+  
+  @Test
+  public void shouldDisplay16Minfor40CentsAndProduceValidReceipt() throws IllegalCoinException {
+	  ps.addPayment(5);
+	  ps.addPayment(10);
+	  ps.addPayment(25);
+	  
+	  Receipt receipt = ps.buy();
 
+	  assertEquals("Buy receipt should be the same", 16, receipt.value());
+  }
+  
+  @Test
+  public void buyFor100Cents() throws IllegalCoinException {
+	  ps.addPayment(25);
+	  ps.addPayment(25);
+	  ps.addPayment(25);
+	  ps.addPayment(25);
+	  
+	  Receipt receipt = ps.buy();
+
+	  assertEquals( "Should display 40 min for 100 cents", 
+              100 / 5 * 2, receipt.value());
+  }
+  
+  @Test
+  public void payStationResetsBetweenTwoDifferentPayments() throws IllegalCoinException {
+	  ps.addPayment(25);
+	  ps.addPayment(25);
+	  Receipt receipt = ps.buy();
+	  
+	  assertEquals( "Should display 20 min for 100 cents", 
+              50 / 5 * 2, receipt.value());
+	  
+	  ps.addPayment(25);
+	  ps.addPayment(25);
+	  
+	  Receipt receipt1 = ps.buy();
+
+	  assertEquals( "Should display 20 min for 100 cents", 
+              50 / 5 * 2, receipt1.value());
+  }
 }
