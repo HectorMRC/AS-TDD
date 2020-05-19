@@ -34,7 +34,8 @@ public class TestPayStation {
   /** Fixture for pay station testing. */
   @Before
   public void setUp() {
-    ps = new PayStationImpl();
+	RateStrategy rateImplementation = new LinearRateStrategy();
+    ps = new PayStationImpl(rateImplementation);
   }
 
   /**
